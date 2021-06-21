@@ -1,0 +1,24 @@
+<div align=center>
+
+<a  href="{% url 'upload' %}"> <h1> upload video </h1> </a>
+ 
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+
+{% for video in videos %}
+
+<div align=center style="object-fit: cover">
+	<h2> video name: {{video.title}} <br> size: {{ video.size|filesizeformat }} </h2>
+	<video  controls >
+	<source src="{{video.video.url}}" type="video/mp4">
+	</video>
+</div>
+
+{% endfor %}
+</div>
